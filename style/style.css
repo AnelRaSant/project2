@@ -1,0 +1,64 @@
+.navBar1 {
+    float: right;
+    padding-right: 10px;
+}
+
+.loginBtn {
+    font-family: 'Anonymous Pro', monospace;
+    padding-right: 90%;
+    background-color: #ddd;
+    border: none;
+    color: black;
+    padding: 6px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 16px;
+  }
+
+.navBar2 {
+    padding-right: 32%;
+    float: right;
+    margin-top: 80px;
+}
+
+.navBtn {
+    border-right: black;
+    border: white;
+    font-size: x-large;
+    background-color: white;
+    font-family: 'Anonymous Pro', monospace;
+}
+.homeimg{
+    padding-left: 22%;
+    width: 500px;
+    height: 500px;
+}
+
+#mainImg{
+    width: 740px;
+    height: 500px;
+}
+.browBtn {
+    width: 100px; 
+     height: 100px; 
+    color: white;
+     border: black;
+     background-color:black;
+     font-family: 'Anonymous Pro', monospace;
+
+ }
+ .container{
+     display: flex;
+     justify-content: center;
+     align-self: center;
+     flex-flow: row nowrap;
+ }
+
+ .row{
+      width: 100%;
+     margin: 30px auto;
+ }
+ 
