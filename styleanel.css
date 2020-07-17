@@ -1,0 +1,27 @@
+.navbar 
+{
+    float: right;
+    padding-right: 0px;           
+}
+
+.container
+{
+    align-content: center;
+    text-align: center;
+    justify-content: center;
+    font-family: 'PT Sans Narrow', sans-serif;
+}
+.card {
+    margin: 0 auto; /* Added */
+    float: none; /* Added */
+    margin-bottom: 10px; /* Added */
+}
+
+
+
+.footer{
+    background-color: black;
+    color: white;
+    text-align: center;
+    font-family: 'PT Sans Narrow', sans-serif;
+}
