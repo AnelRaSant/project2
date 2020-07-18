@@ -3,7 +3,7 @@ module.exports = function (sequelize, DataTypes) {
         name: DataTypes.STRING,
         email: DataTypes.STRING, // Missing: email validation
         password: DataTypes.STRING,  // Missing: change with bcrypt
-        preferences: DataTypes.ARRAY(DataTypes.STRING),
+        // preferences: DataTypes.ARRAY(DataTypes.STRING),
     });
 
     User.associate = function (models) {
