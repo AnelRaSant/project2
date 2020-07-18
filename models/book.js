@@ -10,6 +10,15 @@ module.exports = function(sequelize, DataTypes) {
     average_rating: DataTypes.DECIMAL,
     num_pages: DataTypes.INTEGER,
     ratings_count: DataTypes.INTEGER,
+    price: DataTypes.DECIMAL(10,2),
+    createdAt: {
+      type: DataTypes.DATE,
+      defaultValue: new Date()
+    },
+    updatedAt: {
+      type: DataTypes.DATE,
+      defaultValue: new Date()
+    }
   });
 
   Book.associate = function(models) {

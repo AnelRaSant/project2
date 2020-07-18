@@ -26,15 +26,15 @@ module.exports = function(app) {
     
 
   // Get route for retrieving a single shoppingcart for a Userid
-  app.get("/api/shoppingcart/:Userid", function(req, res) {
+  app.get("/api/shoppingcart/:UserId", function(req, res) {
     db.Shoppingcart.findOne({
       where: {
-        Userid: req.params.Userid
+        UserId: req.params.UserId
       },
       // include: [db.Author]
     }).then(function (dbShoppingcart) {
       console.log('In .get /api/shoppingcarts - findOne()');
-      console.log('req.params.Userid: ', req.params.Userid);
+      console.log('req.params.UserId: ', req.params.UserId);
       console.log('dbShoppingcart: ', dbShoppingcart);
       res.json(dbShoppingcart);
     });
@@ -59,7 +59,10 @@ module.exports = function(app) {
   
   // POST route for saving a new shoppingcart
   app.post("/api/shoppingcarts", function(req, res) {
-    db.Shoppingcart.create(req.body).then(function (dbShoppingcart) {
+    db.Shoppingcart.create({
+      UserId: req.body.UserId,
+      BookId: req.body.BookId
+    }).then(function (dbShoppingcart) {
       console.log('In .POST /api/shoppingcarts - create()');
       console.log('req.body: ', req.body);
       console.log('dbShoppingcart: ', dbShoppingcart);
@@ -69,14 +72,14 @@ module.exports = function(app) {
 
   
   // DELETE route for deleting a shoppingcart
-  app.delete("/api/shoppingcarts/:Userid", function(req, res) {
+  app.delete("/api/shoppingcarts/:UserId", function(req, res) {
     db.Shoppingcart.destroy({
       where: {
-        Userid: req.params.Userid
+        UserId: req.params.UserId
       }
     }).then(function (dbShoppingcart) {
       console.log('In .DELETE /api/shoppingcarts - destroy()');
-      console.log('req.params.Userid: ', req.params.Userid);
+      console.log('req.params.UserId: ', req.params.UserId);
       console.log('dbShoppingcart: ', dbShoppingcart);
       res.json(dbShoppingcart);
     });
@@ -89,11 +92,11 @@ module.exports = function(app) {
       req.body,
       {
         where: {
-          Userid: req.body.Userid
+          UserId: req.body.UserId
         }
       }).then(function (dbShoppingcart) {
       console.log('In .PUT /api/shoppingcarts - update()');
-      console.log('req.body.Userid: ', req.body.Userid);
+      console.log('req.body.UserId: ', req.body.UserId);
       console.log('dbShoppingcart: ', dbShoppingcart);
       res.json(dbShoppingcart);
     });

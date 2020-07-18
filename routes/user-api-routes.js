@@ -3,7 +3,7 @@ var db = require("../models");
 module.exports = function (app) {
     app.get("/api/users", function (req, res) {
         db.User.findAll({
-            //include: [db.Post]
+            include: [db.Shoppingcart, db.Purchase]
         }).then(function (dbUser) {
             res.json(dbUser);
         });
@@ -14,7 +14,13 @@ module.exports = function (app) {
             where: {
                 id: req.params.id
             },
-            // include: [db.Post]
+            include: [{
+                model: db.Shoppingcart,
+                include: ["User_Book"]
+            }, {
+                model: db.Purchase,
+                include: ["Purchase_Book"]
+            }]
         }).then(function (dbUser) {
             res.json(dbUser);
         });
