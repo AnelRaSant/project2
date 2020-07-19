@@ -17,6 +17,7 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: true
         });
         Shoppingcart.belongsToMany(models.Book, { through: 'Shoppingcart_Book' }); // Missing variables book_id and user_id
+        // Shoppingcart.belongsToMany(models.Shoppingcart_Book, { through: 'Shoppingcart_Book' });
     };
 
     return Shoppingcart;

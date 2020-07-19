@@ -16,7 +16,9 @@ module.exports = function (app) {
 
   // GET route for getting all of the shoppingcarts
   app.get("/api/shoppingcarts", function (req, res) {
-    db.Shoppingcart.findAll({}).then(function (dbShoppingcart) {
+    db.Shoppingcart.findAll({
+      include: [db.Book]
+    }).then(function (dbShoppingcart) {
       console.log('In .get /api/shoppingcarts - findAll()');
       console.log('req.body: ', req.body);
       console.log('dbShoppingcart: ', dbShoppingcart);
@@ -67,7 +69,7 @@ module.exports = function (app) {
       console.log('req.body: ', req.body);
       console.log('dbShoppingcart: ', dbShoppingcart);
       console.log('dbShoppingcart.id: ', dbShoppingcart.id);
-      res.json(dbShoppingcart);
+      // res.json(dbShoppingcart);
 
       // Also insert into the intermediary table
       db.Shoppingcart_Book.create({

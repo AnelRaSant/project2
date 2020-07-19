@@ -5,14 +5,14 @@ module.exports = function (app) {
     // Get all the users
     app.get("/api/users", function (req, res) {
         db.User.findAll({
-            include: [db.Shoppingcart, db.Purchase]
-            /* include: [{
+            // include: [db.Shoppingcart, db.Purchase]
+            include: [{
                 model: db.Shoppingcart,
-                include: db.Shoppingcart_Book
+                include: db.Book
             }, {
                 model: db.Purchase,
-                include: db.Purchase_Book
-            }] */
+                include: db.Book
+            }]
         }).then(function (dbUser) {
             res.json(dbUser);
         });
