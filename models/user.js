@@ -6,8 +6,16 @@ module.exports = function (sequelize, DataTypes) {
         preferences1: DataTypes.STRING,
         preferences2: DataTypes.STRING,
         preferences3: DataTypes.STRING,
-        ShoppingcartId: DataTypes.INTEGER,
-        PurchaseId: DataTypes.INTEGER,
+        // ShoppingcartId: DataTypes.INTEGER,
+        // PurchaseId: DataTypes.INTEGER,
+        createdAt: {
+            type: DataTypes.DATE,
+            defaultValue: new Date()
+        },
+        updatedAt: {
+            type: DataTypes.DATE,
+            defaultValue: new Date()
+        }
     });
 
     User.associate = function (models) {
@@ -16,6 +24,9 @@ module.exports = function (sequelize, DataTypes) {
         User.hasOne(models.Shoppingcart, {
             allowNull: true
         });
+        /* User.hasMany(models.Book, {
+            allowNull: true
+        }); */
         User.hasMany(models.Purchase, {
         });
     };

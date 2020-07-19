@@ -6,6 +6,13 @@ module.exports = function (app) {
     app.get("/api/users", function (req, res) {
         db.User.findAll({
             include: [db.Shoppingcart, db.Purchase]
+            /* include: [{
+                model: db.Shoppingcart,
+                include: db.Shoppingcart_Book
+            }, {
+                model: db.Purchase,
+                include: db.Purchase_Book
+            }] */
         }).then(function (dbUser) {
             res.json(dbUser);
         });
@@ -41,10 +48,10 @@ module.exports = function (app) {
             },
             include: [{
                 model: db.Shoppingcart,
-                // include: ["User_Book"]
+                include: [db.Shoppingcart_Book]
             }, {
                 model: db.Purchase,
-                // include: ["Purchase_Book"]
+                include: [db.Purchase_Book]
             }]
         }).then(function (dbUser) {
             res.json(dbUser);

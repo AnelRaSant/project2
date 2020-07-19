@@ -1,6 +1,14 @@
 module.exports = function (sequelize, DataTypes) {
     var Purchase = sequelize.define("Purchase", {
-        date: DataTypes.DATE
+        date: DataTypes.DATE,
+        createdAt: {
+            type: DataTypes.DATE,
+            defaultValue: new Date()
+        },
+        updatedAt: {
+            type: DataTypes.DATE,
+            defaultValue: new Date()
+        }
     });
 
     Purchase.associate = function (models) {

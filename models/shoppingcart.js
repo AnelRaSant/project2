@@ -1,5 +1,13 @@
 module.exports = function (sequelize, DataTypes) {
     var Shoppingcart = sequelize.define("Shoppingcart", {
+        createdAt: {
+            type: DataTypes.DATE,
+            defaultValue: new Date()
+        },
+        updatedAt: {
+            type: DataTypes.DATE,
+            defaultValue: new Date()
+        }
     });
 
     Shoppingcart.associate = function (models) {
@@ -8,7 +16,7 @@ module.exports = function (sequelize, DataTypes) {
         Shoppingcart.belongsTo(models.User, {
             allowNull: true
         });
-        Shoppingcart.belongsToMany(models.Book, { through: 'User_Book' }); // Missing variables book_id and user_id
+        Shoppingcart.belongsToMany(models.Book, { through: 'Shoppingcart_Book' }); // Missing variables book_id and user_id
     };
 
     return Shoppingcart;
