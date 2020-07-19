@@ -6,12 +6,8 @@ module.exports = function (sequelize, DataTypes) {
         preferences1: DataTypes.STRING,
         preferences2: DataTypes.STRING,
         preferences3: DataTypes.STRING,
-        shoppingcartId: {
-            type: DataTypes.INTEGER,
-        },
-        purchaseId: {
-            type: DataTypes.INTEGER,
-        }
+        ShoppingcartId: DataTypes.INTEGER,
+        PurchaseId: DataTypes.INTEGER,
     });
 
     User.associate = function (models) {
