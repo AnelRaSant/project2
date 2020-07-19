@@ -13,11 +13,11 @@ module.exports = function (sequelize, DataTypes) {
 
     Purchase.associate = function (models) {
         Purchase.belongsTo(models.User, {
-            foreignKey: {
+            foreignKey: {  // ??
                 allowNull: false
             }
         });
-        Purchase.belongsToMany(models.Book, { through: 'Purchase_Book' }); // Missing variables purchase_id and book_id
+        Purchase.belongsToMany(models.Book, { through: 'Purchase_Book' });
     };
 
     return Purchase;

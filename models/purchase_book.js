@@ -2,11 +2,11 @@
 var db = require("../models");
 
 module.exports = function (sequelize, DataTypes) {
-    const Shoppingcart_Book = sequelize.define('Shoppingcart_Book', {
-        ShoppingcartId: {
+    const Purchase_Book = sequelize.define('Purchase_Book', {
+        PurchaseId: {
             type: DataTypes.INTEGER,
             references: {
-                model: db.Shoppingcart, 
+                model: db.Purchase, 
                 key: 'id'
             }
         },
@@ -19,5 +19,5 @@ module.exports = function (sequelize, DataTypes) {
         }
     });
 
-    return Shoppingcart_Book;
+    return Purchase_Book;
 }

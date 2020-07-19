@@ -16,7 +16,9 @@ module.exports = function (app) {
 
     // GET route for getting all of the purchases
     app.get("/api/purchases", function (req, res) {
-        db.Purchase.findAll({}).then(function (dbPurchase) {
+        db.Purchase.findAll({
+            include: [db.Book]
+        }).then(function (dbPurchase) {
             console.log('In .get /api/purchases - findAll()');
             console.log('req.body: ', req.body);
             console.log('dbPurchase: ', dbPurchase);
@@ -67,7 +69,18 @@ module.exports = function (app) {
             console.log('In .POST /api/purchases - create()');
             console.log('req.body: ', req.body);
             console.log('dbPurchase: ', dbPurchase);
-            res.json(dbPurchase);
+            // res.json(dbPurchase);
+
+            // Also insert into the intermediary table
+            db.Purchase_Book.create({
+                PurchaseId: dbPurchase.id,
+                BookId: req.body.BookId
+            }).then(function (dbPurchase_Book) {
+                console.log('In .POST /api/purchase - create() - Purchase_Book');
+                console.log('req.body: ', req.body);
+                console.log('dbPurchase_Book: ', dbPurchase_Book);
+                res.json(dbPurchase_Book);
+            });
         });
     });
 
