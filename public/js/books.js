@@ -1,9 +1,8 @@
 $(document).ready(() => {
 
     // ********** Event listeners ***********
-
+    let currentBookId;
     $(document).on('click', (event) => {
-        let currentBookId;
 
         // Click on any category name
         if ($(event.target).attr('class') === 'categoryLink') {
@@ -76,7 +75,7 @@ $(document).ready(() => {
             });
         }
 
-        // Click on the cart
+        // Click on add to the cart
         else if ($(event.target).attr('id') == 'addToCart') {
             console.log('Add to cart button clicked');
             console.log('currentBookId: ', currentBookId);
