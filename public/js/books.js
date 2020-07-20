@@ -3,6 +3,7 @@ $(document).ready(() => {
     // ********** Event listeners ***********
 
     $(document).on('click', (event) => {
+        let currentBookId;
 
         // Click on any category name
         if ($(event.target).attr('class') === 'categoryLink') {
@@ -67,12 +68,22 @@ $(document).ready(() => {
 
                 // Display the modal
                 $('#bookModal').modal();
+
+                currentBookId = book.id;
             });
         }
 
         // Click on the cart
         else if ($(event.target).attr('id') == 'addToCart') {
             console.log('Add to cart button clicked');
+
+            // Add the book to the cart
+            $.ajax({
+                method: "POST",
+                url: `/api/shoppingcarts`,
+                UserId: 1,   // Missing: Update after authentication
+                BookId: currentBookId
+            })
         }
     });
 
