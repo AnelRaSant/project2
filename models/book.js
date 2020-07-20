@@ -22,8 +22,9 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   Book.associate = function(models) {
-      Book.belongsToMany(models.Shoppingcart, { through: 'User_Book' }); // Missing variables book_id and user_id
-      Book.belongsToMany(models.Purchase, { through: 'Purchase_Book' }); // Missing variables purchase_id and book_id
+    Book.belongsToMany(models.Shoppingcart, { through: 'Shoppingcart_Book' }); // Missing variables book_id and user_id
+    Book.belongsToMany(models.Purchase, { through: 'Purchase_Book' }); // Missing variables purchase_id and book_id
+    // Book.belongsToMany(models.User, { through: 'User_Book' });
   };
 
   return Book;
