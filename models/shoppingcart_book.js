@@ -16,6 +16,7 @@ module.exports = function (sequelize, DataTypes) {
                 model: db.Book, 
                 key: 'id'
             }
+            // defaultValue: 0
         }
     });
 

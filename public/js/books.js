@@ -47,6 +47,9 @@ $(document).ready(() => {
             }).then((book) => {
                 console.log('Modal book: ', book);
 
+                // Empty the modal area
+                $('.modal-body').empty();
+
                 // Create the modal book card
                 let modalBookCard = `
                 <div class="card">
@@ -76,14 +79,28 @@ $(document).ready(() => {
         // Click on the cart
         else if ($(event.target).attr('id') == 'addToCart') {
             console.log('Add to cart button clicked');
+            console.log('currentBookId: ', currentBookId);
+
 
             // Add the book to the cart
-            $.ajax({
+            $.post("/api/shoppingcarts", {
+                UserId: 1,   // Missing: Update after authentication
+                BookId: 6
+            }, (cart_answer) => {
+                console.log('cart_answer: ', cart_answer);
+                // window.location.href = "/blog";
+            });
+
+            
+            /* $.ajax({
                 method: "POST",
-                url: `/api/shoppingcarts`,
+                url: `/api/shoppingcarts`
+            }, {
                 UserId: 1,   // Missing: Update after authentication
                 BookId: currentBookId
-            })
+            }).then((cart_answer) => {
+                console.log('cart_answer: ', cart_answer);
+            }); */
         }
     });
 
@@ -95,17 +112,17 @@ $(document).ready(() => {
         method: "GET",
         url: "/api/books/"
     }).then((books) => {
-        console.log('Books: ', books);
+        // console.log('Books: ', books);
 
         // Create the list of categories
         let categories = books.map((book) => {
             return book.categories;
         });
-        console.log('Categories: ', categories);
+        // console.log('Categories: ', categories);
 
         let uniqueCategories = Array.from(new Set(categories));
 
-        console.log('uniqueCategories: ', uniqueCategories);
+        // console.log('uniqueCategories: ', uniqueCategories);
 
         uniqueCategories.forEach((category) => {
             let li = $('<li>');
