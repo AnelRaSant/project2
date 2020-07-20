@@ -69,6 +69,11 @@ $(document).ready(() => {
                 $('#bookModal').modal();
             });
         }
+
+        // Click on the cart
+        else if ($(event.target).attr('id') == 'addToCart') {
+            console.log('Add to cart button clicked');
+        }
     });
 
 
