@@ -85,10 +85,10 @@ $(document).ready(() => {
             // Add the book to the cart
             $.post("/api/shoppingcarts", {
                 UserId: 1,   // Missing: Update after authentication
-                BookId: 6
+                BookId: currentBookId
             }, (cart_answer) => {
                 console.log('cart_answer: ', cart_answer);
-                // window.location.href = "/blog";
+                window.location.href = "/cart";
             });
 
             
