@@ -1,5 +1,6 @@
 module.exports = function (sequelize, DataTypes) {
     var Purchase = sequelize.define("Purchase", {
+        // total: DataTypes.DECIMAL(10,2),
         date: DataTypes.DATE,
         createdAt: {
             type: DataTypes.DATE,
