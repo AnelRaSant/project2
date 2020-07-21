@@ -21,7 +21,7 @@ module.exports = function(app) {
 
   // browse route loads browse.html
   app.get("/browse", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/views/browse.html"));
+    res.render("mycart")
   });
 
   // cart route loads cart.html
