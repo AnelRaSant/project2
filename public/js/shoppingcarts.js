@@ -2,19 +2,7 @@ $(document).ready(() => {
 
     // ********** Event listeners ***********
     $(document).on('click', (event) => {
-
-
-        // Click on any category name
-        /* if ($(event.target).attr('class') === 'categoryLink') {
-        } */
-
-
-
-
     });
-
-
-
 
     // Load the shoppingcarts
     $.ajax({
@@ -50,14 +38,6 @@ $(document).ready(() => {
                 // console.log(`cartElement: ${cartElement}, typeof ${typeof cartElement}`);
 
                 if (typeof cartElement === 'object' && cartElement != null && cartElement[0] != undefined) {
-                    /* console.log('Book: ', cartElement[0]);
-                    console.log('Book.id: ', cartElement[0].id);
-                    console.log('Book.title: ', cartElement[0].title);
-                    console.log('Book.price: ', cartElement[0].price); */
-                    /* Object.entries(cartElement[0]).forEach((bookProp) => {
-                        console.log('bookProp: ', bookProp);
-                        td.text(bookProp);
-                    }); */
                     // td.text(cartElement[0]);
                     td2.text(cartElement[0].id);
                     td3.text(cartElement[0].title);
