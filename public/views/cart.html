@@ -60,7 +60,6 @@
       <h1>Cart</h1>
 
       <!-- Cart table -->
-
       <table class="table table-hover">
         <thead>
           <tr>
@@ -76,8 +75,84 @@
           <!-- /Cart data -->
         </tbody>
       </table>
-
       <!-- /Cart table -->
+
+      <button type="button" class="btn btn-secondary" id="continueBrowsing">
+        Continue browsing
+      </button>
+      <button type="button" class="btn btn-secondary" id="purchasesHistory">
+        Purchases history
+      </button>
+      <button type="button" class="btn btn-primary" id="confirmPurchase">
+        Confirm purchase!
+      </button>
+
+      <div id="purchasesDiv">
+        <h1 class="mt-5">Purchases history</h1>
+
+        <!-- Purchases table -->
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">PurchaseId</th>
+              <th scope="col">UserId</th>
+              <th scope="col">BookId</th>
+              <th scope="col">Title</th>
+              <th scope="col">Price</th>
+              <th scope="col">Date</th>
+            </tr>
+          </thead>
+          <tbody id="purchasesTableBody">
+            <!-- Purchases data -->
+            <!-- /Purchases data -->
+          </tbody>
+        </table>
+      </div>
+      <!-- /Purchases table -->
+
+      <!-- Purchase confirmation modal -->
+      <div
+        class="modal fade"
+        id="purchaeConfirmationModal"
+        data-backdrop="static"
+        data-keyboard="false"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="purchaeConfirmationModal"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="purchaeConfirmationModal">
+                Purchase confirmation
+              </h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>Payment received.</p>
+              <p>Enjoy your reading!!</p>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /Purchase confirmation modal -->
     </div>
     <!-- /Container -->
 
