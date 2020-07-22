@@ -13,14 +13,17 @@ var PORT = process.env.PORT || 8080;
 
 // Requiring our models for syncing
 var db = require("./models");
-
+var exphbs = require("express-handlebars");
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
 // Static directory
 app.use(express.static("public"));
 
+                                                  //TO ADD CSS FILES???
+                                                  //app.use(express.static(path.join(__dirname, '/public')));
 // Routes
 // =============================================================
 require("./routes/html-routes.js")(app);
