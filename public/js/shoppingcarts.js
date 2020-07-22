@@ -1,5 +1,15 @@
 $(document).ready(() => {
+
     let cleanedCarts;
+
+    // Get logged in user's data
+    let user = $.get("/api/user_data").then(function (data) {
+        console.log('user.email: ', data.email);
+        console.log('user.id: ', data.id);
+        return data;
+    });
+
+
 
     // ******************** Event listeners *********************
     $(document).on('click', (event) => {
@@ -17,39 +27,46 @@ $(document).ready(() => {
         // Confirm purchse button clicked
         if ($(event.target).attr('id') === 'confirmPurchase') {
 
-            // Add the shoppincart to the purchases
-            cleanedCarts.forEach((cart) => {
-                Object.values(cart).forEach((cartElement) => {
-                    if (typeof cartElement === 'object' && cartElement != null && cartElement[0] != undefined) {
-                        $.post("/api/purchases", {
-                            UserId: 1,   // Missing: Update after authentication
-                            BookId: cartElement[0].id
-                        }, (cart_answer) => {
-                            // window.location.href = "/cart";
-                        });
-                    }
+            $.get("/api/user_data").then(function (data) {
+                console.log('user.email: ', data.email);
+                console.log('user.id: ', data.id);
+
+                // Add the shoppincart to the purchases
+                cleanedCarts.forEach((cart) => {
+                    Object.values(cart).forEach((cartElement) => {
+                        if (typeof cartElement === 'object' && cartElement != null && cartElement[0] != undefined) {
+                            $.post("/api/purchases", {
+                                UserId: data.id,
+                                BookId: cartElement[0].id
+                            }, (cart_answer) => {
+                                // window.location.href = "/cart";
+                            });
+                        }
+                    });
                 });
+
+                // Delete the shoppingcart
+                $.ajax({
+                    method: "DELETE",
+                    url: "/api/shoppingcarts/1"
+                }).then((cart_answer) => {
+                    console.log('Cart deleted: ', cart_answer);
+                });
+
+
+                // Display the modal
+                $('#purchaeConfirmationModal').modal();
+
+                // Refresh shoppincart table and Show purchase history
+                $('#purchaeConfirmationModal').on('hidden.bs.modal', function (e) {
+                    loadShoppingcart();
+                    loadPurchases();
+                    $('#purchasesDiv').show();
+                    $('#confirmPurchase').hide();
+                })
             });
 
-            // Delete the shoppingcart
-            $.ajax({
-                method: "DELETE",
-                url: "/api/shoppingcarts/1"
-            }).then((cart_answer) => {
-                console.log('Cart deleted: ', cart_answer);
-            });
 
-
-            // Display the modal
-            $('#purchaeConfirmationModal').modal();
-
-            // Refresh shoppincart table and Show purchase history
-            $('#purchaeConfirmationModal').on('hidden.bs.modal', function (e) {
-                loadShoppingcart();
-                loadPurchases();
-                $('#purchasesDiv').show();
-                $('#confirmPurchase').hide();
-            })
         }
     });
 

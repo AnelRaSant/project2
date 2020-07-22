@@ -1,5 +1,12 @@
 $(document).ready(() => {
 
+    // Get logged in user's data
+    let user = $.get("/api/user_data").then(function (data) {
+        console.log('user.email: ', data.email);
+        console.log('user.id: ', data.id);
+        return data;
+    });
+
     // ********** Event listeners ***********
     let currentBookId;
     $(document).on('click', (event) => {
@@ -80,26 +87,21 @@ $(document).ready(() => {
             console.log('Add to cart button clicked');
             console.log('currentBookId: ', currentBookId);
 
+            $.get("/api/user_data").then(function (data) {
+                console.log('user.email: ', data.email);
+                console.log('user.id: ', data.id);
 
-            // Add the book to the cart
-            $.post("/api/shoppingcarts", {
-                UserId: 1,   // Missing: Update after authentication
-                BookId: currentBookId
-            }, (cart_answer) => {
-                console.log('cart_answer: ', cart_answer);
-                window.location.href = "/cart";
+                // Add the book to the cart
+                $.post("/api/shoppingcarts", {
+                    UserId: data.id,
+                    BookId: currentBookId
+                }, (cart_answer) => {
+                    console.log('cart_answer: ', cart_answer);
+                    window.location.href = "/cart";
+                });
             });
 
-            
-            /* $.ajax({
-                method: "POST",
-                url: `/api/shoppingcarts`
-            }, {
-                UserId: 1,   // Missing: Update after authentication
-                BookId: currentBookId
-            }).then((cart_answer) => {
-                console.log('cart_answer: ', cart_answer);
-            }); */
+
         }
     });
 
