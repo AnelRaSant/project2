@@ -64,6 +64,7 @@ module.exports = function (app) {
         db.Purchase.create({
             UserId: req.body.UserId,
             BookId: req.body.BookId,
+            // total: req.body.total,
             date: new Date()
         }).then(function (dbPurchase) {
             console.log('In .POST /api/purchases - create()');
