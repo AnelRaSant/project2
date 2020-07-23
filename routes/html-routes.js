@@ -54,10 +54,4 @@ module.exports = function(app) {
     // res.sendFile(path.join(__dirname, "../public/views/cart.html"));
     res.render('cart', {js: ['shoppingcarts.js']});
   });
-
-  // signupLogin route loads signupLogin.html
-  /* app.get("/signupLogin", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/views/signupLogin.html"));
-  }); */
-
 };

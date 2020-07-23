@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+
+    <title>Goog Reader</title>
+  </head>
+
+  <body>
+    <!-- Container -->
+    <div class="container">
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/">Navbar</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/browse">Browse</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/cart"
+                >Cart <span class="sr-only">(current)</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/signupLogin">SignUp/Login</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <!-- /Navbar -->
+
+      <h1>Cart</h1>
+
+      <!-- Cart table -->
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">ShoppingcartId</th>
+            <th scope="col">UserId</th>
+            <th scope="col">BookId</th>
+            <th scope="col">Title</th>
+            <th scope="col">Price</th>
+          </tr>
+        </thead>
+        <tbody id="cartTableBody">
+          <!-- Cart data -->
+          <!-- /Cart data -->
+        </tbody>
+      </table>
+      <!-- /Cart table -->
+
+      <button type="button" class="btn btn-secondary" id="continueBrowsing">
+        Continue browsing
+      </button>
+      <button type="button" class="btn btn-secondary" id="purchasesHistory">
+        Purchases history
+      </button>
+      <button type="button" class="btn btn-primary" id="confirmPurchase">
+        Confirm purchase!
+      </button>
+
+      <div id="purchasesDiv">
+        <h1 class="mt-5">Purchases history</h1>
+
+        <!-- Purchases table -->
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">PurchaseId</th>
+              <th scope="col">UserId</th>
+              <th scope="col">BookId</th>
+              <th scope="col">Title</th>
+              <th scope="col">Price</th>
+              <th scope="col">Date</th>
+            </tr>
+          </thead>
+          <tbody id="purchasesTableBody">
+            <!-- Purchases data -->
+            <!-- /Purchases data -->
+          </tbody>
+        </table>
+      </div>
+      <!-- /Purchases table -->
+
+      <!-- Purchase confirmation modal -->
+      <div
+        class="modal fade"
+        id="purchaeConfirmationModal"
+        data-backdrop="static"
+        data-keyboard="false"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="purchaeConfirmationModal"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="purchaeConfirmationModal">
+                Purchase confirmation
+              </h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>Payment received.</p>
+              <p>Enjoy your reading!!</p>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /Purchase confirmation modal -->
+    </div>
+    <!-- /Container -->
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Bootstrap -->
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+      integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Moments.js -->
+    <script src="https://momentjs.com/downloads/moment-with-locales.js"></script>
+
+    <!-- Main JS -->
+    <script src="../js/shoppingcarts.js"></script>
+  </body>
+</html>

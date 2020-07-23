@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "holahola0101",
+    "password": "HELLOWORLD",
     "database": "good_reader_db",
     "host": "127.0.0.1",
     "dialect": "mysql"
