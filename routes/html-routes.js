@@ -22,7 +22,7 @@ module.exports = function(app) {
       res.redirect("/home");
     }
     // res.sendFile(path.join(__dirname, "../public/views/signup.html"));
-    res.render('signup');
+    res.render('signup', {js: ['signup.js']});
     // res.sendFile(path.join(__dirname, "../public/views/home.html"));
   });
 
@@ -32,27 +32,27 @@ module.exports = function(app) {
       res.redirect("/home");
     }
     // res.sendFile(path.join(__dirname, "../public/views/login.html"));
-    res.render('login');
+    res.render('login', {js: ['login.js']});
   });
 
   // Here we've add our isAuthenticated middleware to this route.
   // If a user who is not logged in tries to access this route they will be redirected to the signup page
   app.get("/home", isAuthenticated, function(req, res) {
     // res.sendFile(path.join(__dirname, "../public/views/home.html"));
-    res.render('home');
+    res.render('home', {js: ['home.js']});
   });
 
 
   // browse route loads browse.html
   app.get("/browse", isAuthenticated, function(req, res) {
     // res.sendFile(path.join(__dirname, "../public/views/browse.html"));
-    res.render('browse');
+    res.render('browse', {js: ['books.js']});
   });
 
   // cart route loads cart.html
   app.get("/cart", isAuthenticated, function(req, res) {
     // res.sendFile(path.join(__dirname, "../public/views/cart.html"));
-    res.render('cart');
+    res.render('cart', {js: ['shoppingcarts.js']});
   });
 
   // signupLogin route loads signupLogin.html

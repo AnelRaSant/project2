@@ -28,14 +28,14 @@ module.exports = function (app) {
 
 
     // Get route for retrieving a single Purchase for a Userid
-    app.get("/api/Purchase/:UserId", function (req, res) {
-        db.Purchase.findOne({
+    app.get("/api/purchase/:UserId", function (req, res) {
+        db.Purchase.findAll({
             where: {
                 UserId: req.params.UserId
             },
-            // include: [db.Author]
+            include: [db.Book]
         }).then(function (dbPurchase) {
-            console.log('In .get /api/purchases - findOne()');
+            console.log('In .get /api/purchase/:UserId - findAll()');
             console.log('req.params.UserId: ', req.params.UserId);
             console.log('dbPurchase: ', dbPurchase);
             res.json(dbPurchase);

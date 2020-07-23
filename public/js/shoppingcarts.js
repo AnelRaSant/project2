@@ -1,5 +1,6 @@
 $(document).ready(() => {
 
+
     let cleanedCarts;
 
     // Get logged in user's data
@@ -48,7 +49,7 @@ $(document).ready(() => {
                 // Delete the shoppingcart
                 $.ajax({
                     method: "DELETE",
-                    url: "/api/shoppingcarts/1"
+                    url: `/api/shoppingcarts/${data.id}`
                 }).then((cart_answer) => {
                     console.log('Cart deleted: ', cart_answer);
                 });
@@ -146,50 +147,56 @@ $(document).ready(() => {
         $('#purchasesTableBody').empty();
 
         // Load the purchases
-        $.ajax({
-            method: "GET",
-            url: "/api/purchases"
-        }).then((purchases) => {
+        $.get("/api/user_data").then(function (data) {
+            console.log('user.email: ', data.email);
+            console.log('user.id: ', data.id);
 
-            // Clean the data
-            let cleanedPurchases = purchases.map((purchase) => {
-                return {
-                    id: purchase.id,
-                    date: moment(purchase.date).format("MMM Do YY"),
-                    UserId: purchase.UserId,
-                    Books: purchase.Books
-                }
-            });
-            console.log('cleanedPurchases: ', cleanedPurchases);
+            $.ajax({
+                method: "GET",
+                url: `/api/purchase/${data.id}` // Missing 
+            }).then((purchases) => {
 
-            // Create the table
-            cleanedPurchases.forEach((purchase) => {
-                let tr = $('<tr>');
-                let td0 = $('<td>');
-                let td1 = $('<td>');
-                let td2 = $('<td>');
-                let td3 = $('<td>');
-                let td4 = $('<td>');
-                let td5 = $('<td>');
-                td0.text(purchase.id);
-                td1.text(purchase.UserId);
-                td5.text(purchase.date);
-                Object.values(purchase).forEach((purchaseElement) => {
-                    if (typeof purchaseElement === 'object' && purchaseElement != null && purchaseElement[0] != undefined) {
-                        td2.text(purchaseElement[0].id);
-                        td3.text(purchaseElement[0].title);
-                        td4.text(purchaseElement[0].price);
+                // Clean the data
+                let cleanedPurchases = purchases.map((purchase) => {
+                    return {
+                        id: purchase.id,
+                        date: moment(purchase.date).format("MMM Do YY"),
+                        UserId: purchase.UserId,
+                        Books: purchase.Books
                     }
                 });
-                tr.append(td0);
-                tr.append(td1);
-                tr.append(td2);
-                tr.append(td3);
-                tr.append(td4);
-                tr.append(td5);
-                $('#purchasesTableBody').append(tr);
+                console.log('cleanedPurchases: ', cleanedPurchases);
+
+                // Create the table
+                cleanedPurchases.forEach((purchase) => {
+                    let tr = $('<tr>');
+                    let td0 = $('<td>');
+                    let td1 = $('<td>');
+                    let td2 = $('<td>');
+                    let td3 = $('<td>');
+                    let td4 = $('<td>');
+                    let td5 = $('<td>');
+                    td0.text(purchase.id);
+                    td1.text(purchase.UserId);
+                    td5.text(purchase.date);
+                    Object.values(purchase).forEach((purchaseElement) => {
+                        if (typeof purchaseElement === 'object' && purchaseElement != null && purchaseElement[0] != undefined) {
+                            td2.text(purchaseElement[0].id);
+                            td3.text(purchaseElement[0].title);
+                            td4.text(purchaseElement[0].price);
+                        }
+                    });
+                    tr.append(td0);
+                    tr.append(td1);
+                    tr.append(td2);
+                    tr.append(td3);
+                    tr.append(td4);
+                    tr.append(td5);
+                    $('#purchasesTableBody').append(tr);
+                });
             });
         });
+
     }
 
     const init = () => {
