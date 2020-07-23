@@ -11,8 +11,6 @@ var db = require("../models");
 // Routes
 // =============================================================
 module.exports = function (app) {
-  console.log('In shoppingcart-api-routes.js');
-  // console.log("db.Shoppingcart: ", db.Shoppingcart);
 
   // GET route for getting all of the shoppingcarts
   app.get("/api/shoppingcarts", function (req, res) {
